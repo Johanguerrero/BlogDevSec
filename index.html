@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guía completa sobre seguridad en el ciclo de vida ágil del desarrollo de software con conceptos, modelos teóricos y casos reales">
+  <title>Seguridad en el Desarrollo Ágil de Software</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="./assets/JohanPixel.png" type="image/x-icon">
+
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container-nav">
+      <a href="#" class="logo">
+        <i class="fas fa-shield-alt"></i> SecureDev
+      </a>
+      <ul class="nav-links">
+        <li><a href="#intro"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="#conceptos"><i class="fas fa-lightbulb"></i> Conceptos</a></li>
+        <li><a href="#teorias"><i class="fas fa-book"></i> Modelos</a></li>
+        <li><a href="#amenazas"><i class="fas fa-bug"></i> Amenazas</a></li>
+        <li><a href="#casos"><i class="fas fa-briefcase"></i> Casos</a></li>
+        <li><a href="#recursos"><i class="fas fa-tools"></i> Recursos</a></li>
+      </ul>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Seguridad en el Ciclo de Vida Ágil del Desarrollo de Software</h1>
+      <p class="subtitle">Integrando prácticas de seguridad desde la planificación hasta el mantenimiento</p>
+      <div class="author-info">
+        <img src="./assets/JohanPixel.png" alt="Johan" class="author-img">
+        <div>
+          <p class="author-name">Johan Guerrero</p>
+          <p class="post-date"><i class="far fa-calendar-alt"></i> Publicado el 22 de Mayo, 2025</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <article class="article-container">
+      <section class="intro" id="intro">
+        <div class="section-header">
+          <h2><i class="fas fa-star"></i> Introducción</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        
+          <div class="intro-content">
+          <div class="intro-img">
+            <img src="./assets/seguridadinoof2.jpg" alt="Ciclo de vida de desarrollo seguro" />
+          </div>
+
+          
+        <p>En la era digital actual, donde el software es el motor que impulsa negocios, gobiernos y la vida cotidiana, la seguridad se ha convertido en un pilar fundamental para el desarrollo tecnológico y organizacional. La metodología ágil, caracterizada por su enfoque iterativo e incremental que permite entregas cíclicas de valor y una alta flexibilidad ante cambios, presenta desafíos particulares en materia de seguridad que requieren una atención especializada (Asana, 2025). Según Hernández Bejarano y Baquero Rey (s.f.), integrar la seguridad en cada fase del ciclo de vida ágil es esencial para mitigar riesgos y vulnerabilidades que pueden comprometer la integridad del software y los datos.</p>
+
+         <p> Estudios indican que aproximadamente el 60% de las brechas de seguridad se originan en vulnerabilidades del software, y el costo promedio de una violación de datos supera los 4 millones de dólares, mientras que corregir fallas en producción puede ser hasta 100 veces más costoso que prevenirlas en la fase de diseño (Hernández Bejarano & Baquero Rey, s.f.). Por ello, este artículo propone un marco integral para la incorporación de prácticas de seguridad desde el diseño hasta la implementación, apoyado en modelos teóricos y experiencias prácticas que fortalecen el desarrollo seguro en entornos ágiles. </p>
+          
+         <p> La adopción de metodologías ágiles no solo mejora la productividad y la entrega continua de valor al cliente, sino que también demanda una gestión rigurosa de la seguridad para enfrentar las amenazas crecientes en el entorno digital (Quesada Reyes, 2020). En consecuencia, las organizaciones deben implementar políticas y estrategias que protejan sus activos informáticos y minimicen riesgos, garantizando así la confianza y resiliencia en sus sistemas (Monares, 2020).</p>
+        
+          <!-- <div class="key-points">
+          <div class="key-point">
+            <i class="fas fa-chart-line"></i>
+            <p>El 60% de las brechas de seguridad se originan en vulnerabilidades del software</p>
+          </div>
+          <div class="key-point">
+            <i class="fas fa-dollar-sign"></i>
+            <p>El costo promedio de una violación de datos supera los $4 millones</p>
+          </div>
+          <div class="key-point">
+            <i class="fas fa-clock"></i>
+            <p>Corregir vulnerabilidades en producción cuesta 100x más que prevenirlas en diseño</p>
+          </div>
+        </div>
+        -->
+        <p>Este blog proporciona un panorama que permite conocer el camino yy las generalidades para integrar seguridad en cada fase del ciclo de vida ágil, desde conceptos fundamentales hasta implementación práctica, respaldado por modelos teóricos y lecciones de casos reales.</p>
+      </section>
+
+      <section class="conceptos" id="conceptos">
+        <div class="section-header">
+          <h2><i class="fas fa-lightbulb"></i> Conceptos Clave de Seguridad en SDLC Ágil</h2>
+          <div class="section-divider"></div>
+        </div>
+        <p>La seguridad en el desarrollo ágil no es una fase separada, sino un conjunto de prácticas integradas en cada iteración. A continuación, desglosamos los componentes esenciales:</p>
+        
+
+         <!-- Confidencialidad -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-user-secret"></i>
+      </div>
+      <h3>Confidencialidad</h3>
+      <div class="card-content">
+        <p>Protege la información contra accesos no autorizados, garantizando la privacidad.</p>
+        <ul class="card-list">
+          <li>Control de acceso</li>
+          <li>Encriptación</li>
+          <li>Clasificación de la información</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Integridad -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <h3>Integridad</h3>
+      <div class="card-content">
+        <p>Garantiza que los datos no han sido alterados o manipulados sin autorización.</p>
+        <ul class="card-list">
+          <li>Hashing</li>
+          <li>Controles de cambios</li>
+          <li>Auditorías</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Disponibilidad -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-server"></i>
+      </div>
+      <h3>Disponibilidad</h3>
+      <div class="card-content">
+        <p>Asegura que los servicios estén operativos cuando los usuarios los necesiten.</p>
+        <ul class="card-list">
+          <li>Backups</li>
+          <li>Redundancia</li>
+          <li>Defensa contra DDoS</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Autenticación -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-fingerprint"></i>
+      </div>
+      <h3>Autenticación</h3>
+      <div class="card-content">
+        <p>Verifica la identidad del usuario mediante credenciales o biometría.</p>
+        <ul class="card-list">
+          <li>Contraseñas seguras</li>
+          <li>Biometría</li>
+          <li>Autenticación multifactor</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Autorización -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-key"></i>
+      </div>
+      <h3>Autorización</h3>
+      <div class="card-content">
+        <p>Define qué recursos o acciones están permitidos para cada usuario autenticado.</p>
+        <ul class="card-list">
+          <li>Roles y permisos</li>
+          <li>Listas de control de acceso</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- No repudio -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-user-check"></i>
+      </div>
+      <h3>No repudio</h3>
+      <div class="card-content">
+        <p>Evita que un usuario niegue haber realizado una acción o transacción.</p>
+        <ul class="card-list">
+          <li>Firmas digitales</li>
+          <li>Registros de auditoría</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Criptografía -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-lock"></i>
+      </div>
+      <h3>Criptografía</h3>
+      <div class="card-content">
+        <p>Protege la información mediante técnicas de cifrado y descifrado.</p>
+        <ul class="card-list">
+          <li>Cifrado simétrico/asimétrico</li>
+          <li>Protocolos seguros (SSL/TLS)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Vulnerabilidad -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <h3>Vulnerabilidad</h3>
+      <div class="card-content">
+        <p>Debilidad en el sistema que puede ser explotada por un atacante.</p>
+        <ul class="card-list">
+          <li>Software desactualizado</li>
+          <li>Mala configuración</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Amenaza -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-bug"></i>
+      </div>
+      <h3>Amenaza</h3>
+      <div class="card-content">
+        <p>Evento con potencial de explotar vulnerabilidades y causar daño.</p>
+        <ul class="card-list">
+          <li>Malware</li>
+          <li>Phishing</li>
+          <li>Hackers</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Riesgo -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-balance-scale"></i>
+      </div>
+      <h3>Riesgo</h3>
+      <div class="card-content">
+        <p>Probabilidad de que una amenaza explote una vulnerabilidad y el impacto que esto genere.</p>
+        <ul class="card-list">
+          <li>Evaluación de impacto</li>
+          <li>Matriz de riesgos</li>
+        </ul>
+      </div>
+    </div>
+
+        <div class="card-container">
+          <!-- Card 1 -->
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <h3>Planificación Segura</h3>
+            <div class="card-content">
+              <p>Definir requisitos de seguridad (SRS), identificar activos críticos y establecer métricas de seguridad desde el sprint 0.</p>
+              <ul class="card-list">
+                <li>Análisis de riesgos inicial</li>
+                <li>Requisitos regulatorios</li>
+                <li>User stories de seguridad</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-drafting-compass"></i>
+            </div>
+            <h3>Diseño Seguro</h3>
+            <div class="card-content">
+              <p>Arquitectura basada en principios de seguridad como mínimo privilegio y defensa en profundidad.</p>
+              <ul class="card-list">
+                <li>Modelado de amenazas</li>
+                <li>Patrones de diseño seguros</li>
+                <li>Revisiones de arquitectura</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Implementación Segura</h3>
+            <div class="card-content">
+              <p>Prácticas de codificación segura y herramientas de análisis estático integradas en el flujo de trabajo.</p>
+              <ul class="card-list">
+                <li>Validación de entradas</li>
+                <li>Linters de seguridad</li>
+                <li>Pair programming</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-vial"></i>
+            </div>
+            <h3>Pruebas de Seguridad</h3>
+            <div class="card-content">
+              <p>Testing automatizado y manual para identificar vulnerabilidades antes de producción.</p>
+              <ul class="card-list">
+                <li>SAST/DAST</li>
+                <li>Pruebas de penetración</li>
+                <li>Fuzzing</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3>Despliegue Seguro</h3>
+            <div class="card-content">
+              <p>Configuración segura de infraestructura y monitoreo proactivo.</p>
+              <ul class="card-list">
+                <li>Hardening</li>
+                <li>Secrets management</li>
+                <li>Canary releases</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <h3>Mantenimiento Seguro</h3>
+            <div class="card-content">
+              <p>Respuesta a incidentes y gestión continua de vulnerabilidades.</p>
+              <ul class="card-list">
+                <li>Patch management</li>
+                <li>Monitoreo de logs</li>
+                <li>Plan de respuesta</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="teorias" id="teorias">
+        <div class="section-header">
+          <h2><i class="fas fa-book"></i> Modelos Teóricos de Seguridad</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="intro-content">
+          <div class="intro-img">
+            <img src="./assets/seguridadinfo.jpg" alt="Ciclo de vida de desarrollo seguro" />
+          </div>
+
+        <p>Los modelos teóricos proporcionan el fundamento para diseñar sistemas seguros. Estos son los más relevantes para el desarrollo ágil:</p>
+        
+        <div class="model-grid">
+          <div class="model-card">
+            <h3>Modelo CIA</h3>
+            <div class="model-content">
+              <p>La tríada Confidencialidad, Integridad y Disponibilidad forma la base de la seguridad informática.</p>
+              <div class="model-details">
+                <p><strong>Aplicación:</strong> Diseñar controles para cada componente</p>
+                <p><strong>Ejemplo:</strong> Encriptación (C), Hashes (I), Redundancia (A)</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="model-card">
+            <h3>Bell-LaPadula</h3>
+            <div class="model-content">
+              <p>Modelo de control de acceso multinivel para proteger información clasificada.</p>
+              <div class="model-details">
+                <p><strong>Aplicación:</strong> Sistemas gubernamentales</p>
+                <p><strong>Reglas:</strong> No leer arriba, no escribir abajo</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="model-card">
+            <h3>Modelo Biba</h3>
+            <div class="model-content">
+              <p>Modelo de integridad que previene la corrupción de datos.</p>
+              <div class="model-details">
+                <p><strong>Aplicación:</strong> Sistemas financieros</p>
+                <p><strong>Reglas:</strong> No leer abajo, no escribir arriba</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="model-card">
+            <h3>Clark-Wilson</h3>
+            <div class="model-content">
+              <p>Modelo de integridad basado en transacciones bien formadas.</p>
+              <div class="model-details">
+                <p><strong>Aplicación:</strong> Sistemas comerciales</p>
+                <p><strong>Componentes:</strong> CDIs, IVPs, TPs</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="model-card">
+            <h3>Seguridad en Capas</h3>
+            <div class="model-content">
+              <p>Defensa en profundidad con múltiples controles de seguridad.</p>
+              <div class="model-details">
+                <p><strong>Aplicación:</strong> Todos los sistemas</p>
+                <p><strong>Ejemplo:</strong> Firewall + WAF + Auth + Encryption</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p>Los modelos teóricos de seguridad informática ofrecen la base conceptual para estructurar sistemas protegidos desde las primeras fases del desarrollo ágil. El modelo CIA, que contempla la confidencialidad, integridad y disponibilidad, es esencial para definir controles que protejan la información, como el uso de encriptación, hashes y redundancia. Modelos como Bell-LaPadula y Biba se enfocan en el control de acceso y la integridad de los datos en entornos clasificados o financieros, mientras que Clark-Wilson refuerza la integridad a través de transacciones controladas. La estrategia de seguridad en capas complementa estos modelos aplicando múltiples niveles de defensa. Estas estructuras permiten integrar seguridad desde el inicio en entornos ágiles de desarrollo (Villanueva, 2023).</p>
+
+
+      </section>
+
+      <section class="amenazas" id="amenazas">
+        <div class="section-header">
+          <h2><i class="fas fa-bug"></i> Amenazas Comunes en Desarrollo Ágil</h2>
+          <div class="section-divider"></div>
+        </div>
+        <p>El OWASP Top 10 identifica los riesgos críticos que todo equipo ágil debe conocer:</p>
+        
+        <div class="threats-table">
+          <div class="threat-row header">
+            <div class="threat-rank">#</div>
+            <div class="threat-name">Amenaza</div>
+            <div class="threat-impact">Impacto</div>
+            <div class="threat-prevention">Prevención</div>
+          </div>
+          
+          <div class="threat-row">
+            <div class="threat-rank">1</div>
+            <div class="threat-name">Inyección</div>
+            <div class="threat-impact">Alto - Pérdida de datos, ejecución remota</div>
+            <div class="threat-prevention">Prepared statements, ORMs, validación</div>
+          </div>
+          
+          <div class="threat-row">
+            <div class="threat-rank">2</div>
+            <div class="threat-name">Autenticación Rota</div>
+            <div class="threat-impact">Crítico - Acceso no autorizado</div>
+            <div class="threat-prevention">MFA, strong hashing, rate limiting</div>
+          </div>
+          
+          <div class="threat-row">
+            <div class="threat-rank">3</div>
+            <div class="threat-name">Exposición de Datos</div>
+            <div class="threat-impact">Alto - Violación de privacidad</div>
+            <div class="threat-prevention">Encriptación, mínimo dato necesario</div>
+          </div>
+          
+          <div class="threat-row">
+            <div class="threat-rank">4</div>
+            <div class="threat-name">XXE</div>
+            <div class="threat-impact">Medio - Lectura de archivos, SSRF</div>
+            <div class="threat-prevention">Deshabilitar DTDs, usar JSON</div>
+          </div>
+          
+          <div class="threat-row">
+            <div class="threat-rank">5</div>
+            <div class="threat-name">Control de Acceso Roto</div>
+            <div class="threat-impact">Alto - Elevación de privilegios</div>
+            <div class="threat-prevention">RBAC, pruebas de acceso</div>
+          </div>
+          
+          <div class="threat-row">
+            <div class="threat-rank">6</div>
+            <div class="threat-name">Configuración Errónea</div>
+            <div class="threat-impact">Medio - Explotación de servicios</div>
+            <div class="threat-prevention">Hardening, revisión de configs</div>
+          </div>
+          
+          <div class="threat-row">
+            <div class="threat-rank">7</div>
+            <div class="threat-name">XSS</div>
+            <div class="threat-impact">Medio - Robo de sesión, defacement</div>
+            <div class="threat-prevention">Encoding, CSP, sanitización</div>
+          </div>
+        </div>
+        
+        <div class="threat-mitigation">
+          <h3>Estrategias de Mitigación</h3>
+          <ul class="mitigation-list">
+            <li><strong>Shift Left Security:</strong> Integrar seguridad desde las primeras fases</li>
+            <li><strong>Automatización:</strong> SAST/DAST en pipeline CI/CD</li>
+            <li><strong>Capacitación:</strong> Secure coding training para devs</li>
+            <li><strong>Threat Modeling:</strong> Análisis sistemático de amenazas</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="casos" id="casos">
+        <div class="section-header">
+          <h2><i class="fas fa-briefcase"></i> Casos de Estudio Reales</h2>
+          <div class="section-divider"></div>
+        </div>
+        <p>Analizamos incidentes notorios para extraer lecciones aplicables al desarrollo ágil:</p>
+        
+        <div class="case-studies">
+          <div class="case-study">
+            <div class="case-header">
+              <h3>Equifax (2017)</h3>
+              <span class="case-impact">Impacto: 147M usuarios</span>
+            </div>
+
+            <div class="intro-content">
+              <div class="intro-img">
+                <img src="./assets/Equifax.png" alt="Ciclo de vida de desarrollo seguro" />
+              </div>
+              </div>
+
+            <div class="case-content">
+              <div class="case-details">
+                <p><strong>Causa:</strong> Vulnerabilidad en Apache Struts (CVE-2017-5638) sin parchear</p>
+                <p><strong>Falla:</strong> Falta de gestión de vulnerabilidades y monitoreo</p>
+                <p><strong>Coste:</strong> $1.4 mil millones en multas y compensaciones</p>
+              </div>
+              <div class="case-lessons">
+                <h4>Lecciones para equipos ágiles:</h4>
+                <ul>
+                  <li>Inventario completo de dependencias</li>
+                  <li>Proceso ágil para parches críticos</li>
+                  <li>Monitoreo continuo de vulnerabilidades</li>
+                </ul>
+              </div>
+            </div>
+          
+          <div class="case-study">
+            <div class="case-header">
+              <h3>Facebook-Cambridge Analytica (2018)</h3>
+              <span class="case-impact">Impacto: 87M perfiles</span>
+            </div>
+
+            <div class="intro-content">
+              <div class="intro-img">
+                <img src="./assets/facebook.png" alt="Ciclo de vida de desarrollo seguro" />
+              </div>
+              </div>
+
+            <div class="case-content">
+              <div class="case-details">
+                <p><strong>Causa:</strong> API con permisos excesivos y falta de auditoría</p>
+                <p><strong>Falla:</strong> Diseño inseguro de controles de acceso</p>
+                <p><strong>Coste:</strong> $5 mil millones en multas FTC</p>
+              </div>
+              <div class="case-lessons">
+                <h4>Lecciones para equipos ágiles:</h4>
+                <ul>
+                  <li>Principio de mínimo privilegio en APIs</li>
+                  <li>Revisiones de arquitectura de seguridad</li>
+                  <li>Monitoreo de uso anómalo de datos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="case-study">
+            <div class="case-header">
+              <h3>SolarWinds (2020)</h3>
+              <span class="case-impact">Impacto: 18K organizaciones</span>
+            </div>
+
+            <div class="intro-content">
+              <div class="intro-img">
+                <img src="./assets/facebook.png" alt="Ciclo de vida de desarrollo seguro" />
+              </div>
+              </div>
+
+            <div class="case-content">
+              <div class="case-details">
+                <p><strong>Causa:</strong> Cadena de suministro comprometida</p>
+                <p><strong>Falla:</strong> Falta de controles en el proceso de build</p>
+                <p><strong>Coste:</strong> Impacto a nivel nacional</p>
+              </div>
+              <div class="case-lessons">
+                <h4>Lecciones para equipos ágiles:</h4>
+                <ul>
+                  <li>Protección de pipelines CI/CD</li>
+                  <li>Verificación de integridad de artefactos</li>
+                  <li>Seguridad en la cadena de suministro</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="recursos" id="recursos">
+        <div class="section-header">
+          <h2><i class="fas fa-tools"></i> Recursos para Implementación</h2>
+          <div class="section-divider"></div>
+        </div>
+        
+        <div class="resources-container">
+          <div class="resource-category">
+            <h3><i class="fas fa-code"></i> Herramientas de Desarrollo Seguro</h3>
+            <ul>
+              <li><strong>SAST:</strong> SonarQube, Checkmarx, Fortify</li>
+              <li><strong>DAST:</strong> OWASP ZAP, Burp Suite</li>
+              <li><strong>SCA:</strong> Snyk, Dependency-Check</li>
+              <li><strong>Hardening:</strong> CIS Benchmarks</li>
+            </ul>
+          </div>
+          
+          <div class="resource-category">
+            <h3><i class="fas fa-book-open"></i> Frameworks y Estándares</h3>
+            <ul>
+              <li>OWASP SAMM (Modelo de Madurez)</li>
+              <li>BSIMM (Building Security In Maturity Model)</li>
+              <li>ISO 27034 (Seguridad en Aplicaciones)</li>
+              <li>NIST SSDF (Secure Software Development Framework)</li>
+            </ul>
+          </div>
+          
+          <div class="resource-category">
+            <h3><i class="fas fa-graduation-cap"></i> Capacitación</h3>
+            <ul>
+              <li>OWASP Secure Coding Practices</li>
+              <li>SANS Secure Coding</li>
+              <li>Pluralsight Security Paths</li>
+              <li>Secure Code Warrior</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="conclusion">
+        <div class="section-header">
+          <h2><i class="fas fa-check-circle"></i> Consieraciones y Referencias </h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="conclusion-content">
+          <p>Incorporar la seguridad en cada etapa del ciclo de vida ágil no representa una barrera para la entrega rápida, sino una ventaja estratégica que potencia la calidad y la confianza en el software. Los equipos que integran enfoques como DevSecOps no solo aceleran la entrega continua, sino que también fortalecen la resiliencia frente a amenazas, mejoran la colaboración entre áreas y reducen significativamente los costos asociados a vulnerabilidades tardías.</p>
+
+
+          <div class="benefits-grid">
+            <div class="benefit-item">
+              <i class="fas fa-shield-alt"></i>
+              <p>Reducción de vulnerabilidades en producción</p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-money-bill-wave"></i>
+              <p>Menores costos de remediación</p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-clock"></i>
+              <p>Respuesta más rápida a incidentes</p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-user-shield"></i>
+              <p>Mayor confianza de clientes</p>
+            </div>
+          </div>
+          
+
+          <section class="bibliografia" id="bibliografia">
+            <div class="section-header">
+              <h2><i class="fas fa-book"></i> Referencias</h2>
+              <div class="section-divider"></div>
+            </div>
+          
+            <ul style="list-style-type: none; padding-left: 0;">
+              <li>
+                Asana. (2025). <em>Seguridad en entornos ágiles</em>. Recuperado de <a href="https://asana.com/es" target="_blank">https://asana.com/es</a>
+              </li>
+              <li>
+                BBC News Mundo. (2019, julio 23). <em>Capital One: el robo de datos personales que afecta a más de 100 millones de personas en EE.UU. y Canadá</em>. Recuperado de <a href="https://www.bbc.com/mundo/noticias-49093124" target="_blank">https://www.bbc.com/mundo/noticias-49093124</a>
+              </li>
+              <li>
+                Espinosa de los Monteros, J. (2020, diciembre 18). <em>El ataque a SolarWinds explicado: qué es y por qué trae de cabeza a grandes corporaciones y gobiernos del mundo</em>. Xataka. Recuperado de <a href="https://www.xataka.com/pro/ataque-a-solarwinds-explicado-que-ataque-a-esta-empresa-desconocida-trae-cabeza-a-grandes-corporaciones-gobiernos-mundo" target="_blank">https://www.xataka.com/pro/ataque-a-solarwinds</a>
+              </li>
+              <li>
+                Fernández, A. (2017, septiembre 8). <em>Hackean a Equifax, una de las mayores agencias de informes crediticios, afectando a 143 millones de usuarios</em>. Xataka. Recuperado de <a href="https://www.xataka.com/seguridad/hackean-equifax-una-de-las-mayores-agencias-de-informes-crediticios-afectando-a-143-millones-de-usuarios" target="_blank">https://www.xataka.com/seguridad/hackean-equifax</a>
+              </li>
+              <li>
+                Hernández Bejarano, M., & Baquero Rey, L. E. (s.f.). <em>Ciclo de vida de desarrollo ágil de software seguro</em>. Universidad Piloto de Colombia.
+              </li>
+              <li>
+                Monares, D. (2020). <em>Implementación de políticas de seguridad informática en entornos ágiles</em>. Universidad Nacional Autónoma de México.
+              </li>
+              <li>
+                Quesada Reyes, A. (2020). <em>Seguridad informática en el desarrollo de software ágil: buenas prácticas y desafíos</em>. Universidad de Costa Rica.
+              </li>
+            </ul>
+          </section>
+          
+
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>SecureDev</h3>
+        <p>Recursos para desarrollar software seguro en metodologías ágiles.</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+      </div>  
+      
+      <div class="footer-section links">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="#intro">Introducción</a></li>
+          <li><a href="#conceptos">Conceptos Clave</a></li>
+          <li><a href="#amenazas">Amenazas</a></li>
+          <li><a href="#casos">Casos de Estudio</a></li>
+        </ul>
+      </div>
+      
+    
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 SecureDev. Todos los derechos reservados. | <a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
